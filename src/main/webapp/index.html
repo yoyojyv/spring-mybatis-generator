@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./bower_components/bootstrap-css-only/css/bootstrap.min.css" />
+</head>
+<body ng-app="myApp">
+
+<div class="container" ng-controller="AppController">
+
+    <div class="page-header">
+        <h1>Spring MyBatis Source Generator</h1>
+    </div>
+
+    <form class="form-horizontal" role="form" ng-submit="saveGenerateSource()">
+
+        <div class="form-group">
+            <label class="col-sm-2">파일 생성 경로</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="절대 경로로 넣을 것" ng-model="generateForm.createPath" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2">패키지명 prefix</label>
+            <div class="col-sm-10">
+                <select class="form-control" ng-options="package as package for package in packages" ng-model="generateForm.packagePrefix">
+                    <option val="">Select Table</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2">Table</label>
+            <div class="col-sm-10">
+                <select class="form-control" ng-options="table as table for table in tables" ng-model="generateForm.tableName"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label>생성할 타입</label>
+                <div class="checkbox">
+                    <label ng-repeat="sourceType in sourceTypes">
+                        <input type="checkbox" checklist-model="generateForm.sourceTypes" checklist-value="sourceType"> {{sourceType}} &nbsp;
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button class="btn btn-info pull-right" type="submit">Save</button>
+            </div>
+        </div>
+
+        <input type="hidden" id="packagePrefix" />
+        <input type="hidden" id="tableName" />
+
+    </form>
+
+</div>
+<script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./bower_components/checklist-model/checklist-model.js"></script>
+<script type="text/javascript" src="./app/app.js"></script>
+<script type="text/javascript" src="./app/controllers.js"></script>
+<script type="text/javascript" src="./app/services.js"></script>
+</body>
+</html>

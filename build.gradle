@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        // see http://docs.spring.io/spring-boot/docs/current/reference/html/howto-hotswapping.html#howto-reload-springloaded-gradle-and-intellij
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE")
+        classpath("org.springframework:springloaded:1.2.0.RELEASE")
+    }
+}
+
+// apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+
+war {
+    baseName = 'spring-mybatis-generator'
+    version =  '0.0.1'
+}
+
+repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
+    compile('org.springframework.boot:spring-boot-starter-web')
+
+
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'com.zaxxer:HikariCP:2.3.8'
+
+    // mariadb
+    compile 'org.mariadb.jdbc:mariadb-java-client:1.1.8'
+
+    // mysql
+    // compile 'mysql:mysql-connector-java:5.1.35'
+
+
+    // thymeleaf
+//    compile('org.thymeleaf:thymeleaf-spring4')
+//    compile('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
+//    compile 'net.sourceforge.nekohtml:nekohtml:1.9.21'
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
