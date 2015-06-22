@@ -20,6 +20,8 @@
     <!--</if>-->
 
     <logger name="me.yoyojyv.springmybatis.codegen" level="${logback.loglevel}"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
 
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>

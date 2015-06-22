@@ -59,7 +59,7 @@ class GroovyMybatisMapperGen {
                     if (c.field == "dateCreated" || c.field == "lastUpdated") {
                         insertSql.append("NOW()\n")
                     } else {
-                        insertSql.append("NOW(), ")
+                        insertSql.append("NOW()\n")
                     }
                 }
             }
@@ -96,7 +96,7 @@ class GroovyMybatisMapperGen {
             }
 
         }
-        updateSql.append("        WHERE id = #{id} \n")
+        updateSql.append("        WHERE id = #{id}")
 
 
         def content =
